@@ -12,12 +12,16 @@ export default function App() {
   const [step, setStep] = useState(0)
   const btnRef = useRef()
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setStep(1)
-  //     btnRef.current.click();
-  //   }, 0)
-  // }, [])
+  const obj = {
+    name : "Osama"
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStep(1)
+      btnRef.current.click();
+    }, 0)
+  }, [])
 
 
 
@@ -25,8 +29,8 @@ export default function App() {
   return (
     <div>
 
-      {/* {step === 0 &&  */}
-        <div  style={{height: "100vh", width : "100%",  opacity: "1"  , position: "relative", top: 0}}>
+      {step === 0 && 
+        <div  style={{height: "100vh", width : "100%",  opacity: "0"  , position: "relative", top: 0}}>
          <div className="element-to-print" ref={ref}>
           <div className="page">
           <div className="page_topImg">
@@ -256,11 +260,11 @@ export default function App() {
       </div>
         </div>
        
-      {/* // } */}
+       } 
     
-      <Pdf style={{width: 500, height: "1000", background: 'red'}} targetRef={ref} filename="attestion.pdf">
+      <Pdf style={{width: 500, height: 100}} targetRef={ref} filename="attestion.pdf">
         {({ toPdf }) => (
-          <button style={{opacity : "0"}} ref={btnRef} className="button" onClick={toPdf}>
+          <button style={{opacity : "1"}} ref={btnRef} className="button" onClick={toPdf}>
             Print
           </button>
         )}
