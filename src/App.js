@@ -3,6 +3,8 @@ import "./App.scss";
 import Pdf from "react-to-pdf";
 import { pdfFromReact } from "generate-pdf-from-react-html";
 import img from "./assets/img.png";
+import qrCode from "./assets/qrCode.png";
+
 
 const ref = React.createRef();
 
@@ -10,12 +12,12 @@ export default function App() {
   const [step, setStep] = useState(0)
   const btnRef = useRef()
 
-  useEffect(() => {
-    setTimeout(() => {
-      setStep(1)
-      btnRef.current.click();
-    }, 0)
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setStep(1)
+  //     btnRef.current.click();
+  //   }, 0)
+  // }, [])
 
 
 
@@ -23,8 +25,8 @@ export default function App() {
   return (
     <div>
 
-      {step === 0 && 
-        <div  style={{height: "100vh", width : "100%",  opacity: "0"  , position: "relative", top: 0}}>
+      {/* {step === 0 &&  */}
+        <div  style={{height: "100vh", width : "100%",  opacity: "1"  , position: "relative", top: 0}}>
          <div className="element-to-print" ref={ref}>
           <div className="page">
           <div className="page_topImg">
@@ -227,8 +229,16 @@ export default function App() {
           <span>LE PREFIT DE LA VILLE DE DJIBOUTI</span>
         </div>
 
+              
+
         <div className="page_headingBottom">
-          <p>J'atteste sur i'honneur i'exactitude <br/> des renseignements portres ci-dessus. <br/> LU ET APPROUVE </p> 
+          <p>J'atteste sur i'honneur i'exactitude <br /> des renseignements portres ci-dessus. <br /> LU ET APPROUVE </p> 
+
+          <div className="qrCode">
+          <img src={qrCode} alt="No" />
+          </div>
+  
+
           <span style={{borderBottom : "2px solid black"}}>M OSMAN BILEH GUIREH</span>
         </div>
 
@@ -246,7 +256,7 @@ export default function App() {
       </div>
         </div>
        
-      }
+      {/* // } */}
     
       <Pdf style={{width: 500, height: "1000", background: 'red'}} targetRef={ref} filename="attestion.pdf">
         {({ toPdf }) => (
